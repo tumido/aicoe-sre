@@ -11,3 +11,6 @@ commonLabels:
 resources:
   - ../../base
   - ./membership.yaml
+
+patchesStrategicMerge:
+  - ./workflow-controller-configmap.yaml

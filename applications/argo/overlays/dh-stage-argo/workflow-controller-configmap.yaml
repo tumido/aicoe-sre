@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: workflow-controller-configmap
+data:
+  parallelism: "10"
+  workflowDefaults: |
+    spec:
+      # must complete in 8h (28,800 seconds)
+      activeDeadlineSeconds: 28800
+      
+      # delete all pods as soon as they complete successfully
+      podGC:
+        strategy: OnPodSuccess
+
+      # keep workflows for 1d (86,400 seconds)
+      ttlStrategy:
+        secondsAfterCompletion: 86400
